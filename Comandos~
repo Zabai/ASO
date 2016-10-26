@@ -1,0 +1,25 @@
+Administración de usuarios
+- Añadir usuarios: useradd
+- Cambiar usuario: su - "Nombre usuario"
+
+Administración de ficheros
+- Crear fichero: touch "Nombre fichero"
+- Ver fichero: cat "Nombre fichero"
+- Borrar fichero: rm filename1 filename2 filename3
+- Renombrar fichero: mv old_file new_file
+- Copiar ficheros: cp source_file destination_file
+- Contar palabras: wc filename
+- Listar ficheros: ls "path"
+
+Administración de directorios:
+- Crear directorio: mkdir dirname
+- Borrar directorio: rmdir dirname1 dirname2 dirname3
+- Cambiar de directorio: cd dirname
+- Renombrar directorio: mv olddir newdir
+
+Administración de variables:
+- Crear variable: nombre_variable=valor;
+- Ver valor: echo $nombre_variable;
+- Lista variables propias: printenv
+- Lista variables usuario: ( set -o posix ; set ) | less | sort
+

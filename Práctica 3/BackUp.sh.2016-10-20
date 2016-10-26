@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Hace BackUp del fichero pasado por argumento
+echo Nº argumentos $#
+
+if [[ $# -eq 1 ]]
+then
+	if [[ -f "$1" ]]
+	then
+		echo BackUp del fichero "$1"
+		cp "$1" "$1".$(date +%Y-%m-%d)
+
+		exit 0
+	else
+		# El >&2 indica que lo emite por el canal de errores
+		echo El fichero "$1" no existe >&2
+
+		exit 1
+	fi
+else
+	echo Nº argumentos incorrecto >&2
+
+	exit 1
+fi

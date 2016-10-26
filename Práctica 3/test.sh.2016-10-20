@@ -1,0 +1,22 @@
+#!/bin/bash
+
+function finder(){
+	if [[ -f $1 ]]
+	then
+		echo El fichero $1 se encuentra en $path/$1
+	else
+		echo $1 no es un fichero >&2
+	fi
+}
+
+function truefinder() {
+
+}
+
+path=$(pwd)
+
+while(( $# > 0 ))
+do
+	finder "$1"
+	shift 1
+done
