@@ -1,8 +1,14 @@
-Administración de usuarios
-- Añadir usuarios: useradd
+Administración de usuarios:
+- Crear usuario: useradd "Nuevo Usuario"
+- Crear usuario en grupo: useradd "Nuevo Usuario" -g "Grupo Existente"
 - Cambiar usuario: su - "Nombre usuario"
+- Modificar usuarios: usermod
+- Borrar usuario: userdel "Nombre Usuario"
 
-Administración de ficheros
+Administración de grupos:
+- Crear grupo: groupadd "Nuevo Grupo"
+
+Administración de ficheros:
 - Crear fichero: touch "Nombre fichero"
 - Ver fichero: cat "Nombre fichero"
 - Borrar fichero: rm filename1 filename2 filename3
@@ -10,6 +16,7 @@ Administración de ficheros
 - Copiar ficheros: cp source_file destination_file
 - Contar palabras: wc filename
 - Listar ficheros: ls "path"
+- Propiedades de fichero: stat
 
 Administración de directorios:
 - Crear directorio: mkdir dirname
@@ -22,3 +29,7 @@ Administración de variables:
 - Ver valor: echo $nombre_variable;
 - Lista variables propias: printenv
 - Lista variables usuario: ( set -o posix ; set ) | less | sort
+
+Administración de shells:
+- Ver shells disponibles: cat /etc/shells
+- Cambiar shell por defecto: chsh -s "Nombre Shell" "Nombre Usuario"
