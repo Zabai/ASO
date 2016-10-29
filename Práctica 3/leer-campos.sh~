@@ -13,7 +13,7 @@ bucle(){
 			(( num++ ))
 		fi
 	done
-	echo "He encontrado $num ficheros con más de $UMBRAL byes"
+	echo "He encontrado $num ficheros con más de $UMBRAL bytes"
 }
 
 stat -c "%s %Y %n" | bucle
