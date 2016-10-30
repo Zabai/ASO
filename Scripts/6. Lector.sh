@@ -1,25 +1,28 @@
 #!/bin/bash
 
 function reader(){
-	while(( $index <= $min ))
+	while(( $index <= $max ))
 	do
 		for file in $*
 		do
-			echo $(sed -n "$index"p "$file")
+			if [ -n "$(sed -n "$index"p "$file")" ]
+			then
+				echo $(sed -n "$index"p "$file")
+			fi
 		done
 		echo
 		index=$(( $index+1 ))
 	done
 }
 
-function getMin(){
-	min=$(wc -l "$1" | cut -d" " -f1)
+function getMax(){
+	max=$(wc -l "$1" | cut -d" " -f1)
 	for file in $*
 	do
 		local wc=$(wc -l "$file" | cut -d" " -f1)
-		if(( $wc < $min ))
+		if(( $wc > $max ))
 		then
-			min=$wc
+			max=$wc
 		fi
 	done
 }
@@ -27,7 +30,7 @@ function getMin(){
 if(( $# >= 2 ))
 then
 	index=1
-	getMin $*
+	getMax $*
 	reader $*
 	exit 0
 else
