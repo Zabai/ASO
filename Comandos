@@ -2,6 +2,8 @@ Administración de usuarios:
 - Crear usuario: useradd "Nuevo Usuario"
 - Crear usuario en grupo: useradd "Nuevo Usuario" -g "Grupo Existente"
 - Cambiar usuario: su - "Nombre usuario"
+- Cambiar contraseña: passwd
+- Ver información: chage -l 'usuario'
 - Modificar usuarios: usermod
 - Borrar usuario: userdel "Nombre Usuario"
 
