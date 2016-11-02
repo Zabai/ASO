@@ -2,7 +2,7 @@
 
 function finder(){
 	index=0
-	find /home -exec stat -c "%U" {} \;
+	find / -exec stat -c "%U" {} \;
 }
 
 function printer(){
