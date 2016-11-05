@@ -1,6 +1,8 @@
 #!/bin/bash
 
 function uidRanged(){
+	IFS=$":"
+	
 	while read name x uid x
 	do
 		if(( $uid >= $1 )) && (( $uid <= $2 ))
@@ -11,14 +13,12 @@ function uidRanged(){
 }
 
 function getMin(){
-	min=$(grep -E "UID_MIN*" "/etc/login.defs")
-	min=$(echo $min | sed 's/[^0-9]//g')
+	min=$(grep -E "UID_MIN*" "/etc/login.defs" | sed 's/[^0-9]//g')
 	return $min
 }
 
 function getMax(){
-	max=$(grep -E "UID_MAX*" "/etc/login.defs")
-	max=$(echo $max | sed 's/[^0-9]//g')
+	max=$(grep -E "UID_MAX*" "/etc/login.defs" | sed 's/[^0-9]//g')
 	return $max
 }
 
@@ -27,17 +27,12 @@ then
 	min=$1
 	max=$2
 	
-	echo "UID - Usuario"
-	
-	IFS=$":"
-	cat "/etc/passwd" | uidRanged $min $max
-	
+	uidRanged $min $max < /etc/passwd
 	exit 0
 else
 	getMin
 	getMax
 
-	IFS=$":"
-	cat "/etc/passwd" | uidRanged $min $max
+	uidRanged $min $max < /etc/passwd
 	exit 0
 fi

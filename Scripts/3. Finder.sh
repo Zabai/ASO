@@ -2,7 +2,7 @@
 
 function finder(){
 	index=0
-	find / -exec stat -c "%U" {} \;
+	find / -printf "%u\n" | sort
 }
 
 function printer(){
@@ -19,8 +19,10 @@ if(( $# == 1 ))
 then
 	nFiles=$1
 	
-	echo "Lista de usuarios con mas de $nFiles ficheros"
-	finder | printer $nFiles
+	echo "Lista de usuarios con más de $nFiles ficheros"
+	finder 2>/dev/null | printer $nFiles
+	exit 0
 else
 	echo Nº incorrecto de argumentos
+	exit 1
 fi

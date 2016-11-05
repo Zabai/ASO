@@ -1,7 +1,8 @@
 #!/bin/bash
 
 function verImpar(){
-	cat $1 | while read line
+	local lineN=1
+	while read line
 	do
 		if(( $lineN % 2 != 0 ))
 		then
@@ -9,12 +10,13 @@ function verImpar(){
 		fi
 		
 		lineN=$(( $lineN + 1 ))
-	done
+	done < $1
 
 }
 
 function verPar(){
-	cat $1 | while read line
+	local lineN=1
+	while read line
 	do
 		if(( $lineN % 2 == 0 ))
 		then
@@ -22,20 +24,17 @@ function verPar(){
 		fi
 		
 		lineN=$(( $lineN + 1 ))
-	done
+	done < $1
 }
 
 param=$1
 file=$2
-
-lineN=1
 
 if [ $param = "-i" ]
 then
 	shift
 	for file in $*
 	do
-		printf "\nLíneas impares del fichero '$file':\n"
 		verImpar $file
 	done
 	exit 0
@@ -44,14 +43,12 @@ then
 	shift
 	for file in $*
 	do
-		printf "\nLíneas pares del fichero '$file':\n"
 		verPar $file
 	done
 	exit 0
 else
 	for file in $*
 	do
-		printf "\nLíneas impares del fichero '$file':\n"
 		verImpar $file
 	done
 	exit 0
