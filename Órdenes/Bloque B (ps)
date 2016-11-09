@@ -1,0 +1,22 @@
+1. Muestre el tiempo transcurrido desde su lanzamiento, el PID y la orden de todos los procesos que se están ejecutando en el sistema.
+
+-ps -e -o time,pid,command
+
+2. Muestre el pid y el propietario de todos los procesos que estén ejecutando el programa bash. La lista debe estar ordenada por el nombre del propietario.
+
+-ps -e -o pid,user -C bash --sort=user
+
+3. ¿Qué hace la siguiente orden?
+
+ps -e --forest
+
+-Muestra un árbol de procesos en ejecución.
+
+4. ¿Qué hace la siguiente orden?
+
+ps -e -opid,ppid,user,pcpu,cputime,cmd --sort=cputime
+
+-Muestra el PID, PPID, Usuario, Porcentaje de CPU, Tiempo de CPU, la CMD de los procesos en ejecución y los ordena de menor tiempo de CPU a mayor.
+
+5. Localice los 5 procesos que más memoria están consumiendo.
+-ps -eo %mem | sort -n | tail -5

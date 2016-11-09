@@ -1,0 +1,39 @@
+Ejercicio 1: ¿Qué hace la siguiente orden?
+
+date > /tmp/foo.txt ; who >> /tmp/foo.txt
+
+-Redirigir la salida de date y who al fichero /tmp/foo.txt.
+
+¿Cuál es la diferencia con esta otra orden?
+
+date > /tmp/foo.txt ; who > /tmp/foo.txt
+
+-Redirige la salida de date y who al fichero /tmp/foo.txt, pero la redirección de la salida de la segunda orden machaca la que produjo date. Esto se debe a la sintaxis de redirección “2ºorden > salida” en vez de “2ºorden >> salida”.
+
+Ejercicio 2: ¿Qué hace la siguiente orden?
+
+ls -lR /boot 2> /tmp/fichA > /tmp/fichB
+
+-Redirige la salida de ls al fichero /tmp/fichA y seguidamente lo dirige al fichero /tmp/fichB.
+
+Ejercicio 3: Combinando las órdenes head y tail, muestre la sexta línea del fichero /etc/passwd
+
+-head -6 /etc/passwd | tail -1
+
+Ejercicio 4: Contar el número de ficheros del directorio /boot (y sólo /boot, sin recursividad)  cuyo nombre contenga una o más letras mayúsculas (pista: grep, wc)
+
+-find /boot -maxdepth 1  -name "*[A-Z]*" -type f | wc -l
+
+Ejercicio 5: Cada usuario del sistema tiene asignado un shell por defecto (último campo del fichero /etc/passwd). Escriba una lista ordenada alfabéticamente de los nombres de usuario (login name) que usan /bin/bash como shell por defecto (pista: cut, grep, sort)
+
+-cut -d: -f1,7 /etc/passwd | grep -e "/bin/bash" | sort
+
+Ejercicio 6: ¿Qué hace la siguiente orden? Modifíquela para que sea más eficiente
+
+cat /etc/group | sort -t: -k1 | cut -d: -f1,3
+
+-cut -d: -f1,3 /etc/group | sort -t: -k1
+
+Ejercicio 7: Enumere los shells que usan los usuarios de su sistema, sin que haya repeticiones (pista: sort y uniq)
+
+-cut -d : -f7 /etc/passwd | uniq | sort

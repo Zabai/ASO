@@ -1,0 +1,23 @@
+1. ¿Qué hace la siguiente orden?
+
+find /etc /boot -type f -newer /etc/passwd
+
+-Encuentra los archivos regulares en /etc y /boot que su última modificación es más reciente que el fichero /etc/passwd.
+
+2. Localice todos los archivos que no pertenezcan al usuario root cuyo tamaño sea mayor que 10 KiB y menor que 50 KiB
+
+-find / ! -user root −size+10k−a−size−50k
+
+
+3. Muestre el tipo de todos los ficheros que encuentre bajo el directorio /home (pista: orden 'file')
+
+-find /home -exec file {} \;
+
+4. Localice todos los archivos del directorio /root que tengan permiso de lectura para el grupo propietario, independientemente del resto de permisos.
+
+-find /root -exec ls -l {} \; | grep -E "^.{4}r.+"
+
+5. ¿Qué hace la siguiente orden?
+
+cd ; find . -maxdepth 1 -empty
+-Muestra todos los ficheros y carpetas vacías que se encuentran en /root sin recursividad.
