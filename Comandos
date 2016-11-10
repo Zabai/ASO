@@ -9,6 +9,9 @@ Administración de usuarios:
 
 Administración de grupos:
 - Crear grupo: groupadd "Nuevo Grupo"
+- Modificar grupo: groupmod "Grupo Existente"
+- Cambiar contraseña: gpasswd
+- Borrar grupo: groupdel "Grupo Existente"
 
 Administración de ficheros:
 - Crear fichero: touch "Nombre fichero"
