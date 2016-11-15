@@ -1,0 +1,53 @@
+Nombre: Zabai Armas Herrera
+DNI: 45361090
+
+-------------------------------------------------
+
+1.
+a) wc /usr/share/dict/words -l | cut -d" " -f1
+b) grep -c -E "[A-Za-z]{18,}" "/usr/share/dict/words"
+c) grep -v "[aeiou]" "/usr/share/dict/words"
+d) Script:
+
+#!/bin/bash
+
+function counter(){
+	local abc="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	local start=0
+	local end=${#abc}
+	while(( start < end ))
+	do
+		echo ${abc:start:1} "("$(grep -i -c [${abc:start:1}] "/usr/share/dict/words")")"
+		start=$(( $start + 1 ))
+	done
+}
+
+if(( $# == 0 ))
+then
+	counter
+	exit 0
+else
+	echo "Nº incorrecto de argumentos"
+	exit 1
+fi
+
+-------------------------------------------------
+
+2.
+a) cut -d: -f1 /etc/passwd | grep "usuario" | sort
+b) 
+
+-------------------------------------------------
+
+3.
+a) . Al directorio actual
+.. Al directorio padre
+/ A la raiz del sistema
+~/root El símbolo ~ es la carpeta del usuario. Por lo que llevaria a la carpeta root que está en la carpeta del usuario
+~root Sin la barra te lleva al directorio del usuario que procede al ~
+b)
+c) Cambiar el archivo /etc/inittab la línea "id:5:initdefault:" a "id:3:initdefault:"
+d) find iname '*.txt' -size +100k -user "ana" | sort -r
+e) Ninguna, las 2 dan permiso de escritura  al usuario, grupo y otros.
+f) Estan jugando a una especie de ruleta rusa. En cada ejecucion de la orden, si random es divisible entre 6 borra de manera recursiva y forzada todos los ficheros desde la raiz. Si no lo es, entonces es un "chico suertudo".
+El chiste ha salido en 9GAG un par de veces :D
