@@ -9,7 +9,7 @@ groupadd alumnos; useradd alumno -g alumnos
 # - Grupo secundario = 'alumnos'
 # - Shell = '/bin/bash'
 # - Caducidad = 4 meses
-useradd invitado -u 1890 -g invitado -G alumnos -s /bin/bash -e "2017-03-02"
+useradd invitado -u 1890 -G alumnos -s /bin/bash -e "2017-03-02"
 
 # Modificar usuario 'invitado' para que:
 # - Caducidad = 1 mes

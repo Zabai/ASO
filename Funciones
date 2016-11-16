@@ -29,3 +29,12 @@ Copiar ficheros encontrador por find:
 Copiar ficheros con nombre estilo BackUp
 	cp fuente destino
 	cp fichero fichero.$(date %Y-%m-%d)
+
+Agregar/Eliminar SUID o SGID (como root)
+	chmod u+s "fichero"
+	chmod g-s "fichero"
+
+Encontrar ficheros con SUID o SGID
+	find / -perm -u=s 2> /dev/null
+	find / -perm -g=s 2> /dev/null
+
