@@ -1,0 +1,20 @@
+Desarrollo de la práctica.
+1. ---
+2. ---
+3. Crear los 2 discos nuevos de 128MB
+4. Utilizar exclusivamente /dev/sdb
+	4.1 fdisk /dev/sdb -> n -> p -> 1 -> 1 -> 16 -> p -> w
+	4.2 mkfs -t ext4 -N 3000 -b 2048 /dev/sdb1
+	4.3 mount /dev/sdb1 /mnt
+	4.4 df -h
+	4.5 Modificar /etc/fstab y añadir una línea al final:
+		"/dev/sdb1		/mnt			ext4	defaults	0 0"
+5. Montar una partición de volumen lógico
+	5.1 Borrar la línea añadida en /etc/fstab -> umount /dev/sdb1
+		fdisk /dev/sdb -> d -> w
+		fdisk /dev/sdb -> n -> p -> 1 -> 1 -> 16 -> p -> t -> L -> 8e -> w
+		fdisk /dev/sdc -> n -> p -> 1 -> 1 -> 16 -> p -> t -> L -> 8e -> w
+		pvcreate -v /dev/sdb1
+		pvcreate -v /dev/sdc1
+	5.2 vgcreate -v VG_ASO /dev/sdb1 /dev/sdc1
+	5.3 lvcreate -L 100M VG_ASO
