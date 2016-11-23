@@ -30,7 +30,8 @@ Desarrollo de la práctica.
 		mkfs -t ext4 -M 3000 -b 2048 -L BACKUP /dev/VG_ASO/lvol1
 	5.7 fsck /dev/VG_ASO/lvol1
 		fsck -a /dev/VG_ASO/lvol1
-	5.8 Modificar /etc/fstab añadiendo las lineas:
+	5.8 mkdir /var/media /var/backup
+	Modificar /etc/fstab añadiendo las lineas:
 	"/dev/VG_ASO/lvol0	/var/media		ext4	defaults	1 3
 	/dev/VG_ASO/lvol1	/var/backup		ext4	defaults	1 3"
 	
