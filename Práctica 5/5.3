@@ -1,0 +1,26 @@
+4. Configurando el sistema operativo
+	4.1 yum install quota
+	4.2 Cambiar /etc/sysconfig/selinux el valor de "SELINUX" a "disabled"
+5. Habilitar las cuotas en un sistema de ficheros
+	5.1 Sobre MEDIA y BACKUP
+	5.2 Modificar /etc/fstab modificando las lineas de MEDIA y BACKUP
+		"/dev/VG_ASO/lvol0	/var/media		ext4	defaults,usrquota,grpquota	1 3
+/dev/VG_ASO/lvol1	/var/backup		ext4	defaults,usrquota,grpquota	1 3"
+
+	5.3 mount -o remount /dev/VG_ASO/lvol0
+		mount -o remount /dev/VG_ASO/lvol1
+		mount
+	5.4 quotacheck -cvug /dev/VG_ASO/lvol0
+		quotacheck -cvug /dev/VG_ASO/lvol1
+	5.5 ls -la /var/media /var/backup
+	5.6 quotaon -v /dev/VG_ASO/lvol0
+		quotaon -v /dev/VG_ASO/lvol1
+		
+mkdir /var/media/usuarios
+chown prueba.prueba /var/media/usuarios
+edquota -u prueba
+
+6. Tareas propuestas
+	6. edquota -u prueba
+        1       0   20480              3     0   200 
+        1		0	51200				0	 0	 600
