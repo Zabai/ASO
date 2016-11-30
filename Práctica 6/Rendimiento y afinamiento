@@ -1,0 +1,4 @@
+1. Monitorizar la carga de trabajo con las órdenes uptime y ps
+	1.1 uptime
+	1.2 ps -e -o pid,user,time --sort='-time'
+	1.3 
